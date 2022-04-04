@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+ {% block title %}market page {% endblock %}
+
+ {% block content %}
+  <table class="table table-hover table-dark">
+      <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">NAME</th>
+            <th scope="col">BARCODE</th>
+            <th scope="col">PRICE</th>
+            <th scope="col">OPTIONS</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for item in item_name %}
+        <tr>
+
+            <td> {{ item.id }}</td>
+             <td> {{ item.name }}</td>
+             <td> {{ item.barcode }}</td>
+             <td>Rs. {{ item.price }}</td>
+             <td>
+                 <button class="btn btn-outline btn-info">more info</button>
+                 <button class="btn btn-outline btn-success">purchase</button>
+             </td>
+        </tr>
+      {% endfor %}
+      </tbody>
+  </table>
+{% endblock %}

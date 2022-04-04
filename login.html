@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Register
+{% endblock %}
+
+{% block content %}
+<body class="text-center">
+<div class="container">
+    <h1>LOGIN</h1><br>
+    <form method="post" class="form-register" style="color:black">
+        {{ form.hidden_tag() }}
+{{ form.username.label() }}
+{{ form.username(class="form-control",placeholder="User Name") }}
+{{ form.password.label() }}
+{{ form.password(class="form-control",placeholder="Password") }}
+
+
+<br>
+<br>
+
+{{ form.submit(class="btn btn-lg btn-block btn-primary")}}
+        <a style="color:red" href="{{url_for('reset_request')}}">Forgot Password?</a>
+        <hr>
+        <div><h3>new to the site?</h3>
+        <a class="btn btn-sm btn-secondary" href="{{ url_for('register_page')}}">Register</a>
+        </div>
+    </form>
+
+</div>
+</body>
+{% endblock %}
