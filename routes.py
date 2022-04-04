@@ -4,7 +4,6 @@ from market.model import Item, User
 from market.forms import RegisterForm, LoginForm, ResetRequestForm
 from market import db
 from flask_login import login_user
-from market import bcrypt
 
 
 @app.route("/")
@@ -33,7 +32,7 @@ def login_page():
     form = LoginForm()
     if form.validate_on_submit():
         attempted_user = User.query.filter_by(username=form.username.data).first()
-        if attempted_user and bcrypt.check_password_correctness(attempted_password=form.password.data):
+        if attempted_user and attempted_user.check_password_correctness(attempted_password=form.password.data):
             flash("Invalid user credentials",category='danger')
         else:
             login_user(attempted_user)
